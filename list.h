@@ -6,19 +6,20 @@ typedef struct {
     char name[50];
     char course[20];
     int year;
-} Student;
+} studentList;
 
 typedef struct node{
-    Student data;
+    studentList data;
     struct node *link;
 } *LinkList;
 
-void linkInsertFirst(LinkList *list, Student s);
-void linkInsertLast(LinkList *list, Student s);
-void linkInsertLastUnique(LinkList *list, Student s);
-void linkInsertAtPosition(LinkList *list, Student s, int pos);
-Student linkDeleteElem(LinkList *list, char id[]);
+void linkInsertFirst(LinkList *list, studentList s);
+void linkInsertLast(LinkList *list, studentList s);
+void linkInsertLastUnique(LinkList *list, studentList s);
+void linkInsertAtPosition(LinkList *list, studentList s, int pos);
+studentList linkDeleteElem(LinkList *list, char id[]);
 LinkList linkSeparateCourse(LinkList *list, char course[]);
+void listDisplay(LinkList list);
 
 #endif
 

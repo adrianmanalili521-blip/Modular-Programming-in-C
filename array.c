@@ -73,3 +73,11 @@ ArrayList arraySeparateCourse(ArrayList *list, char course[]) {
 
     return newList;
 }
+
+void arrDisplay(ArrayList list){
+    int i;
+
+    for (i = 0; i < list.size; i++){
+        printf("Student id#%s , name: %s, course: %s, year: %d\n", list.data[i].id, list.data[i].name, list.data[i].course, list.data[i].year);
+    }
+}

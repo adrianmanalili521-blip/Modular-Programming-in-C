@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "list.h"
 
-void linkInsertFirst(LinkList *list, Student s) {
+void linkInsertFirst(LinkList *list, studentList s) {
     LinkList newnode = (LinkList) malloc(sizeof(struct node));
 
     if(newnode == NULL)return;
@@ -12,7 +13,7 @@ void linkInsertFirst(LinkList *list, Student s) {
     *list = newnode;
 }
 
-void linkInsertLast(LinkList *list, Student s) {
+void linkInsertLast(LinkList *list, studentList s) {
     LinkList newnode = (LinkList) malloc(sizeof(struct node));
 
     if(newnode == NULL)return;
@@ -26,7 +27,7 @@ void linkInsertLast(LinkList *list, Student s) {
     *trav = newnode;
 }
 
-void linkInsertLastUnique(LinkList *list, Student s) {
+void linkInsertLastUnique(LinkList *list, studentList s) {
     LinkList *trav;
     for(trav = list; *trav != NULL && strcmp((*trav)->data.id, s.id) != 0; trav = &(*trav)->link){}
 
@@ -35,7 +36,7 @@ void linkInsertLastUnique(LinkList *list, Student s) {
     }
 }
 
-void linkInsertAtPosition(LinkList *list, Student s, int pos) {
+void linkInsertAtPosition(LinkList *list, studentList s, int pos) {
     LinkList newnode = malloc(sizeof(struct node));
 
     if(newnode == NULL) return;
@@ -49,15 +50,15 @@ void linkInsertAtPosition(LinkList *list, Student s, int pos) {
     *trav = newnode;
 }
 
-Student linkDeleteElem(LinkList *list, char id[]) {
-    Student dummy = {"XXXXX", "XXXXX", "X", 0};
+studentList linkDeleteElem(LinkList *list, char id[]) {
+    studentList dummy = {"XXXXX", "XXXXX", "X", 0};
     LinkList *trav, temp;
     for(trav = list; *trav != NULL && strcmp((*trav)->data.id, id) != 0; trav = &(*trav)->link){}
 
         if(*trav == NULL) return dummy;
 
         temp = *trav;
-        Student deleted = temp->data;
+        studentList deleted = temp->data;
         *trav = temp->link;
         free(temp);
         return deleted;
@@ -85,4 +86,11 @@ LinkList linkSeparateCourse(LinkList *list, char course[]) {
     }
 
     return newList;
+}
+
+void listDisplay(LinkList list){
+    while(list != NULL){
+        printf("Student ID#%s, name: %s, course: %s, year: %d", list->data.id, list->data.name, list->data.course, list->data.year);
+        list = list->link;
+    }
 }

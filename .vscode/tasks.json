@@ -1,0 +1,21 @@
+{
+  
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build and run C program",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "gcc main.c array.c list.c -o main -Wall && ./main"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
+

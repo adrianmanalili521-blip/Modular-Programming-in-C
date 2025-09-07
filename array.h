@@ -21,5 +21,6 @@ void arrayInsertLastUnique(ArrayList *list, Student s);
 void arrayInsertAtPosition(ArrayList *list, Student s, int pos);
 Student arrayDeleteElem(ArrayList *list, char id[]);
 ArrayList arraySeparateCourse(ArrayList *list, char course[]);
+void arrDisplay(ArrayList list);
 
 #endif
